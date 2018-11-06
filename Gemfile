@@ -64,3 +64,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'jquery-inputmask-rails'
 gem "pry-rails"
 gem 'bootstrap-will_paginate'
+gem "loofah", ">= 2.2.3"
+gem "rubyzip", ">= 1.2.2"
+gem "sprockets", ">= 3.7.2"
