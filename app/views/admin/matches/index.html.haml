@@ -1,0 +1,27 @@
+.container-fluid
+  .row
+    .col-sm-6
+      %h2= "Lista de partidos"
+    .col-sm-6
+      .text-right
+        %br
+        = link_to new_admin_match_path, class: "btn btn-info", remote: true do
+          = "Agregar partido"
+  .well
+    .row
+      .col-sm-12
+        %table{ class: css_boostrap_table }
+          %thead
+            %tr
+              %th= "Equipos"
+              %th= "Fecha"
+              %th= "Hora"
+              %th= "Fase"
+              %th= "Grupo"
+              %th{class: "col-sm-2"}= "Marcador final"
+              %th
+          %tbody#js-resource-collection
+            - if resource.size > 0
+              = render partial: 'admin/matches/resource', collection: resource
+.text-center
+  = will_paginate resource

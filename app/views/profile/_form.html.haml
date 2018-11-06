@@ -1,0 +1,20 @@
+#js-resource-form
+  = simple_form_for resource, as: :resource, url:  profile_path(resource), remote: true do |f|
+    .modal-dialog{class: "modal-lg"}
+      .modal-content
+        .modal-header
+          %button.close{:type=>"button", :"data-dismiss"=>"modal", :"aria-hidden"=>"true"}
+            = "&times;".html_safe
+          %h2= "Editar perfil"
+
+        .modal-body
+          = f.input :firstname
+          = f.input :lastname
+          = f.input :age
+          = f.input :favorite_team
+          = f.fields_for :user do |fu|
+            = fu.input :password
+            = fu.input :password_confirmation
+
+        .modal-footer
+          = f.submit t("save"), class: btn_success

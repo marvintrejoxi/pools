@@ -1,0 +1,29 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "bootstrap-datetimepicker"
+@import "font-awesome"
+
+
+.form-group label.error
+  position: relative
+  color: #ee2e32
+  background: #f2dede
+  padding: 8px 35px 8px 14px
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5)
+  border: 1px solid #eed3d7
+  margin-top: 10px
+  border-radius: 4px
+  width: 100%
+
+.form-group label.error::after
+  position: absolute
+  content: "\f0d8"
+  font-family: "FontAwesome"
+  color: #f2dede
+  top: -27px
+  font-size: 30px
+  left: 15px
+  text-shadow: 0px -1px 0px #eed3d7
+
+p.vs
+  margin-top: 2.5em

@@ -1,0 +1,25 @@
+.row
+  .col-sm-12
+    %h2= "Resultados de partidos"
+.well
+  .row
+    .col-sm-12
+      %table{class: css_boostrap_table }
+        %thead
+          %tr
+            %th= "Partido"
+            %th= "Fecha"
+            %th= "Fase"
+            %th= "Grupo"
+            %th= "Resultado"
+        %tbody
+          - if matches_colleccion.size > 0
+            - matches_colleccion.each do |match|
+              %tr
+                %td= match.teams
+                %td= "#{format_complete_date match.match_date}, #{format_time match.match_hour}"
+                %td= match.tournamen_phase
+                %td= match.group
+                %td= match.match_result
+.text-center
+  = will_paginate matches_colleccion

@@ -1,0 +1,11 @@
+<% if resource.valid? %>
+  var resource;
+  $('#main-modal').modal('hide')
+  resource = $('ul.list-group li.item-<%= match.id %>','#js-resource-collection');
+  resource.replaceWith('<%= escape_javascript render(partial: '/matches/resource', locals: {resource: match} ) %>');
+<% else %>
+  var form, errors;
+  form = $('form', '#js-resource-form');
+  errors = JSON.parse('<%= raw resource.errors.messages.to_json %>');
+  Tools.displayErrors(form, errors);
+<% end %>

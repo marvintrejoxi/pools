@@ -1,0 +1,37 @@
+.panel.panel-info
+  .panel-heading
+    = "Mi perfil"
+  .panel-body
+    %table
+    .row
+      .col-sm-4
+        %h5= "Nombre:"
+      .col-sm-4
+        %h5= "Apellido:"
+      .col-sm-4
+        %h5= "Edad:"
+    .row
+      .col-sm-4
+        %strong= resource.firstname
+      .col-sm-4
+        %strong= resource.lastname
+      .col-sm-4
+        %strong= resource.age
+    .row
+      .col-sm-4
+        %h5= "Email:"
+      .col-sm-4
+        %h5= "Equipo favorito:"
+      .col-sm-4
+        %h5= "Numero de aciertos:"
+    .row
+      .col-sm-4
+        %strong= resource.user_email
+      .col-sm-4
+        %strong= resource.favorite_team
+      .col-sm-4
+        %strong= resource.count_successful_forecasts
+
+  .panel-footer.text-right
+    = link_to edit_profile_path(resource), class: btn_default, remote: true do
+      = "Editar perfil"

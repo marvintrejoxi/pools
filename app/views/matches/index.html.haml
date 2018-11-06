@@ -1,0 +1,7 @@
+%h2 Lista de partidos
+
+#js-resource-collection
+  = render partial: "matches/resource", collection: resource
+
+.text-center
+  = will_paginate resource

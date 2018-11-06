@@ -1,0 +1,39 @@
+%ul.list-group
+  %li{ class: "list-group-item item-#{resource.id}" }
+    %strong
+      = "#{format_complete_date resource.match_date}, #{format_time resource.match_hour}"
+    .well
+      .row
+        .col-sm-3
+          = "Equipos:"
+        .col-sm-2
+          = "Grupo:"
+        .col-sm-2
+          = "Fase:"
+        .col-sm-2
+          = "Pronostico:"
+        .col-sm-3
+      .row
+        .col-sm-3
+          %p= resource.teams
+        .col-sm-2
+          %p= resource.group
+        .col-sm-2
+          %p= resource.tournamen_phase
+        .col-sm-2
+          %p
+            = resource.score(current_user).match_score rescue "----"
+            - if resource.has_score?(current_user) && resource.score(current_user).successful_forecast == true
+              %span.label.label-success
+                Acerto el marcador
+            - else
+              %span.label.label-danger
+                No acerto el marcador
+
+        .col-sm-3
+          - unless resource.has_score?(current_user)
+            = link_to new_match_score_path(resource), class: btn_default, remote: true do
+              = "Agregar pronostico"
+          - else
+            = link_to edit_match_score_path(resource, resource.score(current_user)), class: btn_primary, remote: true do
+              = "Editar pronostico"

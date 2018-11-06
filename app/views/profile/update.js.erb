@@ -1,0 +1,11 @@
+<% if resource.valid? %>
+  var resource;
+  $('#main-modal').modal('hide');
+  resource = $('#js-resource-profile');
+  resource.replaceWith('<%= escape_javascript render(partial: 'profile/resource', resource: resource ) %>');
+<% else %>
+  var form, errors;
+  form = $('form', '#js-resource-form');
+  errors = JSON.parse('<%= raw resource.errors.messages.to_json %>');
+  Tools.displayErrors(form, errors);
+<% end %>

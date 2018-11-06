@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Quiniela
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %header
+    %nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          = link_to root_path, class: "navbar-brand" do
+            = "Quiniela"
+        %ul.nav.navbar-nav
+          %li.active
+            = link_to matches_path do
+              = "Mis pronosticos"
+          %li
+            = link_to results_path do
+              = "Resultados de partidos"
+          %li
+            = link_to positions_results_path do
+              = "Tabla de posiciones"
+
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = link_to admin_matches_path do
+              = "Admin Partidos"
+
+          %li
+            = link_to profile_path(current_user_profile) do
+              %span.glyphicon.glyphicon-user
+              = "Mi Perfil"
+          %li
+            - if user_signed_in?
+              = link_to destroy_user_session_path, method: :delete do
+                %span.glyphicon.glyphicon-log-in
+                = "Cerrar sesion"
+
+  %body
+    .container
+      = yield

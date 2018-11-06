@@ -1,0 +1,11 @@
+<% if resource.persisted? %>
+  var resource;
+  $('#main-modal').modal('hide');
+  resource = $('#js-resource-collection');
+  resource.prepend('<%= escape_javascript render(partial: 'admin/matches/resource', resource: resource ) %>');
+<% else %>
+  var form, errors;
+  form = $('form', '#js-resource-form');
+  errors = JSON.parse('<%= raw resource.errors.messages.to_json %>');
+  Tools.displayErrors(form, errors);
+<% end %>

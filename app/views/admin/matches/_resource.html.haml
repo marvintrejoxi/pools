@@ -1,0 +1,17 @@
+%tr{ id: "resource-#{resource.id}" }
+  %td= resource.teams
+  %td= format_date resource.match_date
+  %td= format_time resource.match_hour
+  %td= resource.tournamen_phase
+  %td= resource.group
+  %td{class: "col-sm-1"}
+    - unless resource.game_result.present?
+      = link_to new_admin_match_game_result_path(resource), class: btn_default, title: "Agregar resultado", remote: true do
+        = "Agregar"
+    - else
+      = resource.match_result
+      %br
+      = link_to edit_admin_match_game_result_path(resource, resource.game_result), class: btn_default, title: "Editar resultado", remote: true do
+        = "Editar"
+  %td
+    = link_to_edit_with_remote(edit_admin_match_path(resource))

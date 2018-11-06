@@ -1,0 +1,20 @@
+es:
+  simple_form:
+    "si": 'Si'
+    "no": 'No'
+    required:
+      text: 'Requerido'
+      mark: '*'
+    error_notification:
+      default_message: "Porfavor revisa la siguiente información:"
+    # Examples
+    labels:
+      resource:
+        teams: Equipo
+        group: Grupo
+        match_date: Fecha del partido
+        match_hour: Hora del partido
+        local_team: Equipo local
+        visiting_team: Equipo visitante
+        tournamen_phase: Fase
+        match_score: Pronostico

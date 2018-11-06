@@ -1,0 +1,41 @@
+#js-resource-form
+  = simple_form_for resource, as: :resource, url: url_form, remote: true do |f|
+    .modal-dialog{class: "modal-lg"}
+      .modal-content
+        .modal-header
+          %button.close{:type=>"button", :"data-dismiss"=>"modal", :"aria-hidden"=>"true"}
+            = "&times;".html_safe
+          %h2= "#{action_name == 'new' ? 'Agregar partido' : 'Editar partido'}"
+
+        .modal-body
+          .row
+            .col-sm-6
+              = f.input :local_team, as: :select, collection: option_for_select_teams, include_blank: "Seleccione"
+            .col-sm-6
+              = f.input :visiting_team, as: :select, collection: option_for_select_teams, include_blank: "Seleccione"
+          .row
+            .col-sm-6
+              = f.input :tournamen_phase, as: :select, collection: option_for_select_phase, include_blank: "Seleccione"
+            .col-sm-6
+              = f.input :group, as: :select, collection: option_for_select_group, include_blank: "Seleccione"
+          .row
+            .col-sm-6
+              = f.input :match_date, as: :string, input_html: { class: "datepicker" }
+            .col-sm-6
+              = f.input :match_hour, as: :string, input_html: { class: "timepicker" }
+        .modal-footer
+          = f.submit t("save"), class: btn_success
+
+:javascript
+  $(document).ready(function(){
+    $('.datepicker').datetimepicker({
+      locale: "es",
+      format: 'YYYY/MM/DD'
+    });
+    $('.timepicker').datetimepicker({
+      locale: "es",
+      format: 'HH:mm'
+    });
+    Tools.inputMask('.timepicker',"99:99");
+    Tools.inputMask('.datepicker',"9999-99-99");
+  });

@@ -1,0 +1,24 @@
+.row
+  .col-sm-12
+    %h2= "Tabla de posiciones"
+
+.well
+  .row
+    .col-sm-12
+      %table{class: "table table-bordered"}
+        %thead
+          %tr
+            %th= "#"
+            %th= "Nombre"
+            %th= "Cantidad de partidos acertados"
+            %th= "Efectividad"
+        %tbody
+          - if collection_positions.size > 0
+            - collection_positions.each_with_index do |profile, index|
+              %tr
+                %td= index+1
+                %td= profile.full_name
+                %td= profile.count_successful_forecasts
+                %td
+                  = profile.count_successful_forecasts.to_i * 32 / 100.to_f
+                  = "%"

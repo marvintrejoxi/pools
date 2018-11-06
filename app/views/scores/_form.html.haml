@@ -1,0 +1,18 @@
+#js-resource-form
+  = simple_form_for resource, as: :resource, url: url_form, remote: true do |f|
+    .modal-dialog{class: "modal-lg"}
+      .modal-content
+        .modal-header
+          %button.close{:type=>"button", :"data-dismiss"=>"modal", :"aria-hidden"=>"true"}
+            = "&times;".html_safe
+          %h2= "#{action_name == 'new' ? 'Agregar pronostico' : 'Editar pronostico'}"
+
+        .modal-body
+          = f.input :match_score, input_html: { class: "match_score"}
+        .modal-footer
+          = f.submit t("save"), class: btn_success
+
+:javascript
+  $(document).ready(function(){
+    Tools.inputMask('.match_score',"9-9");
+  });
